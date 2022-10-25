@@ -1,6 +1,5 @@
 import { Body, Controller, Post, Delete, Put, Get, Param } from '@nestjs/common'
 import { CreatePackageDto } from './dto/create-package.dto';
-import { Package } from './schemas/package.schema';
 import { PackageService } from './package.service';
 
 

@@ -10,8 +10,7 @@ export class PackageService {
 
 
     async createPackage(createPackageDto: CreatePackageDto) {
-        const createdPackage = (await this.packageModel.create(createPackageDto))
-            .populate('servicesArr.service_id')
+        const createdPackage = (await this.packageModel.create(createPackageDto)).populate('servicesArr.service_id')
         return createdPackage
     }
 
