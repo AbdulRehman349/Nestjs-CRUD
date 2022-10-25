@@ -14,7 +14,7 @@ export class PackageService {
         return createdPackage
     }
 
-    async finAllPackages() {
+    async findAllPackages() {
         return await this.packageModel.find().exec()
     }
 

@@ -13,12 +13,12 @@ export class ServiceController {
   }
 
   @Get()
-  async findAllServices(): Promise<Service[]> {
+  async findAllServices() {
     return this.serveService.findAllServices();
   }
 
   @Get(':id')
-  async findOneService(@Param('id') id): Promise<Service> {
+  async findOneService(@Param('id') id) {
     return this.serveService.findOneService(id);
   }
 
@@ -28,7 +28,7 @@ export class ServiceController {
   }
 
   @Put(':id')
-  async updateService(@Param('id') id: string, @Body() updateServiceDto: CreateServiceDto): Promise<Service> {
+  async updateService(@Param('id') id: string, @Body() updateServiceDto: CreateServiceDto) {
     return this.serveService.updateService(id, updateServiceDto);
   }
 }

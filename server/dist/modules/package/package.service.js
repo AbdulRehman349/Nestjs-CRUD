@@ -24,7 +24,7 @@ let PackageService = class PackageService {
         const createdPackage = await this.packageModel.create(createPackageDto);
         return createdPackage;
     }
-    async finAllPackages() {
+    async findAllPackages() {
         return await this.packageModel.find().exec();
     }
     async findSinglePackage(id) {
