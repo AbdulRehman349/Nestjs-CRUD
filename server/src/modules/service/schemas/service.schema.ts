@@ -5,6 +5,7 @@ export type ServiceDocument = Service & Document;
 
 @Schema()
 export class Service {
+
   @Prop()
   servicename: string;
 
