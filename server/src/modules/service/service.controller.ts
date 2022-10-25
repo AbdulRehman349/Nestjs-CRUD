@@ -1,29 +1,34 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ServiceService } from './service.service';
 import { CreateServiceDto } from './dto/create-service.dto';
 import { Service } from './schemas/service.schema';
 
 @Controller('service')
 export class ServiceController {
-  constructor(private readonly catsService: ServiceService) { }
+  constructor(private readonly serveService: ServiceService) { }
 
   @Post()
-  async createService(@Body() createCatDto: CreateServiceDto) {
-    await this.catsService.createService(createCatDto);
+  async createService(@Body() createServiceDto: CreateServiceDto) {
+    await this.serveService.createService(createServiceDto);
   }
 
   @Get()
   async findAllServices(): Promise<Service[]> {
-    return this.catsService.findAllServices();
+    return this.serveService.findAllServices();
   }
 
   @Get(':id')
   async findOneService(@Param('id') id): Promise<Service> {
-    return this.catsService.findOneService(id);
+    return this.serveService.findOneService(id);
   }
 
   @Delete(':id')
   async deleteService(@Param('id') id) {
-    return this.catsService.deleteService(id);
+    return this.serveService.deleteService(id);
+  }
+
+  @Put(':id')
+  async updateService(@Param('id') id, @Body() updateService: CreateServiceDto) {
+    return this.serveService.updateService(id, updateService);
   }
 }
