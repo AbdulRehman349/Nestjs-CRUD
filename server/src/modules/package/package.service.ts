@@ -10,12 +10,13 @@ export class PackageService {
 
 
     async createPackage(createPackageDto: CreatePackageDto) {
-        const createdPackage = await this.packageModel.create(createPackageDto)
+        const createdPackage = (await this.packageModel.create(createPackageDto))
+            .populate('servicesArr.service_id')
         return createdPackage
     }
 
     async findAllPackages() {
-        return await this.packageModel.find().exec()
+        return await this.packageModel.find().populate('servicesArr.service_id').exec()
     }
 
     async findSinglePackage(id: string) {

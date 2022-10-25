@@ -4,12 +4,12 @@ import { PackageService } from './package.service';
 export declare class PackageController {
     private readonly packageService;
     constructor(packageService: PackageService);
-    createPackage(createPackageDto: CreatePackageDto): Promise<Package & import("mongoose").Document<any, any, any> & {
+    createPackage(createPackageDto: CreatePackageDto): Promise<Omit<Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
-    findAllPackages(): Promise<(Package & import("mongoose").Document<any, any, any> & {
+    }, never>>;
+    findAllPackages(): Promise<Omit<Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
+    }, never>[]>;
     findSinglePackage(id: string): Promise<Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;

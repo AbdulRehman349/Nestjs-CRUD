@@ -10,10 +10,10 @@ export declare class ServiceService {
     findAllServices(): Promise<(Service & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
-    findOneService(id: any): Promise<Service & import("mongoose").Document<any, any, any> & {
+    findOneService(id: string): Promise<Service & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    deleteService(id: any): Promise<Service & import("mongoose").Document<any, any, any> & {
+    deleteService(id: string): Promise<Service & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
     updateService(id: string, updateServiceDto: CreateServiceDto): Promise<Service & import("mongoose").Document<any, any, any> & {

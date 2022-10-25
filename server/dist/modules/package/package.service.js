@@ -21,11 +21,12 @@ let PackageService = class PackageService {
         this.packageModel = packageModel;
     }
     async createPackage(createPackageDto) {
-        const createdPackage = await this.packageModel.create(createPackageDto);
+        const createdPackage = (await this.packageModel.create(createPackageDto))
+            .populate('servicesArr.service_id');
         return createdPackage;
     }
     async findAllPackages() {
-        return await this.packageModel.find().exec();
+        return await this.packageModel.find().populate('servicesArr.service_id').exec();
     }
     async findSinglePackage(id) {
         return await this.packageModel.findById({ _id: id }).exec();

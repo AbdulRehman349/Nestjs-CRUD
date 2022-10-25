@@ -18,11 +18,11 @@ export class ServiceService {
     return this.serviceModel.find().exec();
   }
 
-  async findOneService(id: any) {
+  async findOneService(id: string) {
     return this.serviceModel.findOne({ _id: id }).exec();
   }
 
-  async deleteService(id: any) {
+  async deleteService(id: string) {
     const deletedService = await this.serviceModel.findByIdAndRemove({ _id: id }).exec();
     return deletedService;
   }

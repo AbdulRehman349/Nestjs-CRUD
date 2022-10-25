@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import * as mongoose from 'mongoose';
+import { Service } from "src/modules/service/schemas/service.schema";
 
 export type PackageDocument = Package & mongoose.Document;
 
@@ -12,8 +13,10 @@ export class Package {
     @Prop()
     description: string;
 
-    @Prop({ type: [{ service_id: { type: mongoose.Schema.Types.ObjectId }, service_qty: { type: Number } }] })
-    servicesArr: { service_id: mongoose.Schema.Types.ObjectId; service_qty: number }[]
+    @Prop({
+        type: [{ service_id: { type: mongoose.Schema.Types.ObjectId }, service_qty: { type: Number } }]
+    })
+    servicesArr: { service_id: Service, service_qty: number }[]
 }
 
 export const PackageSchema = SchemaFactory.createForClass(Package)
