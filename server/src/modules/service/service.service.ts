@@ -28,7 +28,7 @@ export class ServiceService {
   }
 
   async updateService(id: any, updateService) {
-    const updatedService = await this.serviceModel.findByIdAndUpdate(id, updateService{ new: true })
+    const updatedService = await this.serviceModel.findByIdAndUpdate(id, updateService, { new: true }).exec()
     return updatedService;
   }
 }
