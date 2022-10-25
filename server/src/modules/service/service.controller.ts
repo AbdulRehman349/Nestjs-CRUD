@@ -28,7 +28,7 @@ export class ServiceController {
   }
 
   @Put(':id')
-  async updateService(@Param('id') id, @Body() updateService: CreateServiceDto) {
-    return this.serveService.updateService(id, updateService);
+  async updateService(@Param('id') id, @Body() updateServiceDto: CreateServiceDto) {
+    return this.serveService.updateService(id, updateServiceDto);
   }
 }
