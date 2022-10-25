@@ -10,7 +10,7 @@ export declare class ServiceService {
     deleteService(id: any): Promise<Service & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    updateService(id: any, updateServiceDto: CreateServiceDto): Promise<Service & import("mongoose").Document<any, any, any> & {
+    updateService(id: string, updateServiceDto: CreateServiceDto): Promise<Service & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
 }

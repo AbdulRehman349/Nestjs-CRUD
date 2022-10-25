@@ -27,7 +27,7 @@ export class ServiceService {
     return deletedService;
   }
 
-  async updateService(id: any, updateServiceDto: CreateServiceDto) {
+  async updateService(id: string, updateServiceDto: CreateServiceDto) {
     const updatedService = await this.serviceModel.findByIdAndUpdate(id, updateServiceDto, { new: true }).exec()
     return updatedService;
   }

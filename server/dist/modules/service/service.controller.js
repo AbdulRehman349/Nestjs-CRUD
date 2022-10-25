@@ -68,7 +68,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, create_service_dto_1.CreateServiceDto]),
+    __metadata("design:paramtypes", [String, create_service_dto_1.CreateServiceDto]),
     __metadata("design:returntype", Promise)
 ], ServiceController.prototype, "updateService", null);
 ServiceController = __decorate([
