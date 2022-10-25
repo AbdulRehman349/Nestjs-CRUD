@@ -9,16 +9,16 @@ export class ServiceService {
   constructor(@InjectModel("service") private readonly serviceModel: Model<ServiceDocument>) { }
 
 
-  async createService(createServiceDto: CreateServiceDto): Promise<Service> {
+  async createService(createServiceDto: CreateServiceDto) {
     const createdService = await this.serviceModel.create(createServiceDto);
     return createdService;
   }
 
-  async findAllServices(): Promise<Service[]> {
+  async findAllServices() {
     return this.serviceModel.find().exec();
   }
 
-  async findOneService(id: any): Promise<Service> {
+  async findOneService(id: any) {
     return this.serviceModel.findOne({ _id: id }).exec();
   }
 

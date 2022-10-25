@@ -10,6 +10,7 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const service_module_1 = require("./modules/service/service.module");
+const package_module_1 = require("./modules/package/package.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -17,6 +18,7 @@ AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb+srv://abdulrehman:helloworld@newcluster.s4vyylm.mongodb.net/nest-demo?retryWrites=true&w=majority'),
             service_module_1.ServiceModule,
+            package_module_1.PackageModule,
         ],
     })
 ], AppModule);

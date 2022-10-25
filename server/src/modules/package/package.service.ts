@@ -9,7 +9,7 @@ export class PackageService {
     constructor(@InjectModel('package') private readonly packageModel: Model<PackageDocument>) { }
 
 
-    async createPackage(createPackageDto: CreatePackageDto): Promise<Package> {
+    async createPackage(createPackageDto: CreatePackageDto) {
         const createdPackage = await this.packageModel.create(createPackageDto)
         return createdPackage
     }
@@ -18,11 +18,11 @@ export class PackageService {
         return await this.packageModel.find().exec()
     }
 
-    async findSinglePackage(id: string): Promise<Package> {
+    async findSinglePackage(id: string) {
         return await this.packageModel.findById({ _id: id }).exec()
     }
 
-    async deletePackage(id: string): Promise<Package> {
+    async deletePackage(id: string) {
         const deletedPackage = await this.packageModel.findByIdAndRemove({ _id: id }).exec()
         return deletedPackage
     }

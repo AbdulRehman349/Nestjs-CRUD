@@ -14,7 +14,7 @@ export class PackageController {
     }
 
     @Get()
-    async findAllPackages(): Promise<Package[]> {
+    async findAllPackages() {
         return this.packageService.findAllPackages()
     }
 
