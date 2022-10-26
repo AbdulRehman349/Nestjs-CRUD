@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { deletePackage } from '../../actions/service'
-import { getPackage } from '../../actions/service'
+import { deletePackage, getService, getPackage } from '../../actions/service'
 
 
 
@@ -11,10 +10,11 @@ const Packages = () => {
     const navigate = useNavigate()
     const packages = useSelector((state) => state.packages)
 
-
     useEffect(() => {
         dispatch(getPackage())
     }, [])
+
+
 
     const calPrice = (pack) => {
         let total = 0
@@ -39,9 +39,7 @@ const Packages = () => {
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{pack.packagename}</h5>
                                 <p className="font-normal text-gray-700 dark:text-gray-400">{pack.description}</p>
                                 {pack.servicesArr.map((service) => (
-
-                                    <h6 key={service._id} className="font-normal text-gray-700 dark:text-gray-400">{service.service_id.servicename} X {service.service_qty}</h6>
-
+                                    < h6 key={service.service_id._id} className="font-normal text-gray-700 dark:text-gray-400" > {service.service_id.servicename} X {service.service_qty}</h6>
                                 ))}
                                 <h6 className="font-normal text-gray-700 dark:text-gray-400">Price:${calPrice(pack)}</h6>
                                 <div className=' flex justify-around items-center mt-2'>
@@ -57,7 +55,8 @@ const Packages = () => {
                         </div>
                     ))}
                 </div>
-            )}
+            )
+            }
         </>
     )
 }
