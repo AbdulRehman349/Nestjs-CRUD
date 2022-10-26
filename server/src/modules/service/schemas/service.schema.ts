@@ -13,7 +13,7 @@ export class Service {
   description: string;
 
   @Prop()
-  price: number;
+  price: string;
 }
 
 export const ServiceSchema = SchemaFactory.createForClass(Service);

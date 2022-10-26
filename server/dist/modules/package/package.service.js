@@ -29,7 +29,7 @@ let PackageService = class PackageService {
         return await (this.packageModel.find()).populate('servicesArr.service_id', '', this.serviceModel).exec();
     }
     async findSinglePackage(id) {
-        return await this.packageModel.findById({ _id: id }).populate('servicesArr.service_id', '', this.serviceModel).exec();
+        return await this.packageModel.findById({ _id: id }).exec();
     }
     async deletePackage(id) {
         const deletedPackage = await this.packageModel.findByIdAndRemove({ _id: id }).exec();

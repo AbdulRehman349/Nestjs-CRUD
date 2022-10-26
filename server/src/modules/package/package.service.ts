@@ -23,7 +23,7 @@ export class PackageService {
     }
 
     async findSinglePackage(id: string) {
-        return await this.packageModel.findById({ _id: id }).populate('servicesArr.service_id', '', this.serviceModel).exec()
+        return await this.packageModel.findById({ _id: id }).exec()
     }
 
     async deletePackage(id: string) {

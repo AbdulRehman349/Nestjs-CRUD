@@ -23,7 +23,7 @@ __decorate([
 ], Service.prototype, "description", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Service.prototype, "price", void 0);
 Service = __decorate([
     (0, mongoose_1.Schema)()

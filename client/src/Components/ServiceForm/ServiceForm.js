@@ -16,20 +16,22 @@ const ServiceForm = () => {
 
 
     useEffect(() => {
-        dispatch(getsingleService(id))
-    }, [])
+        if (id !== undefined) {
+            dispatch(getsingleService(id))
+        }
+    }, [id])
 
 
     useEffect(() => {
-        if (id != undefined) {
+        if (id !== undefined) {
             if (singleservice) setServiceData(singleservice);
         }
-    }, [singleservice]);
+    }, [singleservice, id]);
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (serviceData.servicename != "" && serviceData.price != "" && serviceData.price != "") {
+        if (serviceData.servicename !== "" && serviceData.price !== "" && serviceData.price !== "") {
             if (singleservice.length === 0) {
                 dispatch(createService(serviceData))
             } else {
