@@ -1,20 +1,45 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteService } from '../../actions/service'
-import { getService } from '../../actions/service'
+import { deletePackage, deleteService, getPackage, getService, updatePackage } from '../../actions/service'
 
 
 
 const Services = () => {
 
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const services = useSelector((state) => state.service)
+    const packages = useSelector((state) => state.packages)
 
     useEffect(() => {
         dispatch(getService())
     }, [])
+
+    useEffect(() => {
+        dispatch(getPackage())
+    }, [])
+
+
+
+    const handleDelete = (id) => {
+        dispatch(deleteService(id))
+        const newPackages = packages.map((singlepackage) => {
+            const newServices = singlepackage.servicesArr.filter((item) => {
+                return item.service_id._id !== id
+            })
+            singlepackage.servicesArr = newServices
+
+            if (singlepackage.servicesArr.length > 0) {
+                dispatch(updatePackage(singlepackage._id, singlepackage))
+            } else {
+                dispatch(deletePackage(singlepackage._id))
+            }
+        })
+    }
+
+
 
     return (
         <>
@@ -34,7 +59,7 @@ const Services = () => {
                                 <p className="font-normal text-gray-700 dark:text-gray-400">{service.description}</p>
                                 <p className="font-normal text-gray-700 dark:text-gray-400">${service.price}</p>
                                 <div className=' flex justify-around items-center mt-2'>
-                                    <button type="submit" onClick={() => dispatch(deleteService(service._id))} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                    <button type="submit" onClick={() => handleDelete(service._id)} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                     </button>
                                     <button type="submit" onClick={() => navigate(`updateservice/${service._id}`)} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">

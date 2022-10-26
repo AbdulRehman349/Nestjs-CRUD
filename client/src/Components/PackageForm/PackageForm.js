@@ -109,7 +109,6 @@ const PackageForm = () => {
                 dispatch(createPackage(packages))
             } else {
                 dispatch(updatePackage(id, packages))
-                // setPackages({ packagename: '', packagedescription: '', servicesArr: [] })
             }
             navigate("/packages");
         } else alert("Provide all details")

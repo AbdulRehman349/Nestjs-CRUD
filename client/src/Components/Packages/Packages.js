@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { deletePackage, getService, getPackage } from '../../actions/service'
+import { deletePackage, getPackage } from '../../actions/service'
 
 
 
