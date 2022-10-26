@@ -6,7 +6,7 @@ export declare class Package {
     description: string;
     servicesArr: {
         service_id: Service;
-        service_qty: string;
+        service_qty: number;
     }[];
 }
 export declare const PackageSchema: mongoose.Schema<Package, mongoose.Model<Package, any, any, any, any>, {}, {}, any, {}, "type", Package>;

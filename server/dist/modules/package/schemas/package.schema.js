@@ -24,7 +24,7 @@ __decorate([
 ], Package.prototype, "description", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        type: [{ service_id: { type: mongoose.Schema.Types.ObjectId }, service_qty: { type: String } }]
+        type: [{ service_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Service' }, service_qty: { type: Number } }]
     }),
     __metadata("design:type", Array)
 ], Package.prototype, "servicesArr", void 0);

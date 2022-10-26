@@ -17,19 +17,19 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 let PackageService = class PackageService {
-    constructor(packageModel) {
+    constructor(packageModel, serviceModel) {
         this.packageModel = packageModel;
+        this.serviceModel = serviceModel;
     }
     async createPackage(createPackageDto) {
-        const createdPackage = (await this.packageModel.create(createPackageDto))
-            .populate('servicesArr.service_id');
+        const createdPackage = await this.packageModel.create(createPackageDto);
         return createdPackage;
     }
     async findAllPackages() {
-        return await this.packageModel.find().populate('servicesArr.service_id').exec();
+        return await (this.packageModel.find()).populate('servicesArr.service_id', '', this.serviceModel).exec();
     }
     async findSinglePackage(id) {
-        return await this.packageModel.findById({ _id: id }).exec();
+        return await this.packageModel.findById({ _id: id }).populate('servicesArr.service_id', '', this.serviceModel).exec();
     }
     async deletePackage(id) {
         const deletedPackage = await this.packageModel.findByIdAndRemove({ _id: id }).exec();
@@ -43,7 +43,9 @@ let PackageService = class PackageService {
 PackageService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)('package')),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __param(1, (0, mongoose_1.InjectModel)('service')),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model])
 ], PackageService);
 exports.PackageService = PackageService;
 //# sourceMappingURL=package.service.js.map
