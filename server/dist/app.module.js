@@ -16,7 +16,7 @@ let AppModule = class AppModule {
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('your databse connection array'),
+            mongoose_1.MongooseModule.forRoot('your database connection string'),
             service_module_1.ServiceModule,
             package_module_1.PackageModule,
         ],

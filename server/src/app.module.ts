@@ -5,7 +5,7 @@ import { PackageModule } from './modules/package/package.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('your databse connection array'),
+    MongooseModule.forRoot('your database connection string'),
     ServiceModule,
     PackageModule,
   ],
