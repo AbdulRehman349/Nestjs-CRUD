@@ -5,7 +5,7 @@ import { PackageModule } from './modules/package/package.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://abdulrehman:helloworld@newcluster.s4vyylm.mongodb.net/nest-demo?retryWrites=true&w=majority'),
+    MongooseModule.forRoot('your databse connection array'),
     ServiceModule,
     PackageModule,
   ],
